@@ -1,0 +1,64 @@
+{
+  "generated": "2026-11-02",
+  "period": [
+    "2026-07-06",
+    "2026-10-30"
+  ],
+  "headlines": 17172,
+  "stock_days": 2310,
+  "min_headlines": 2,
+  "correlations": {
+    "same": {
+      "pearson": 0.3523,
+      "pearson_p": 0.0,
+      "spearman": 0.3268,
+      "spearman_p": 0.0
+    },
+    "next": {
+      "pearson": 0.0011,
+      "pearson_p": 0.9598,
+      "spearman": 0.0012,
+      "spearman_p": 0.9559
+    },
+    "same_ex": {
+      "pearson": 0.3209,
+      "pearson_p": 0.0,
+      "spearman": 0.2929,
+      "spearman_p": 0.0
+    },
+    "next_ex": {
+      "pearson": 0.0015,
+      "pearson_p": 0.9412,
+      "spearman": -0.0013,
+      "spearman_p": 0.9516
+    }
+  },
+  "buckets": {
+    "negative": {
+      "n": 259,
+      "avg_next_excess": 0.041,
+      "se_next_excess": 0.094,
+      "avg_same_excess": -0.936,
+      "up_next_share": 0.494
+    },
+    "neutral": {
+      "n": 853,
+      "avg_next_excess": -0.013,
+      "se_next_excess": 0.049,
+      "avg_same_excess": -0.198,
+      "up_next_share": 0.461
+    },
+    "positive": {
+      "n": 1198,
+      "avg_next_excess": 0.008,
+      "se_next_excess": 0.046,
+      "avg_same_excess": 0.397,
+      "up_next_share": 0.471
+    }
+  },
+  "direction": {
+    "n": 1457,
+    "hit_rate": 0.477,
+    "binom_p": 0.0838
+  }
+}
