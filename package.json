@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:fn": "node --test netlify/functions/tests/"
+    "test:fn": "node --test netlify/tests/functions.test.mjs"
   },
   "engines": {
     "node": ">=18"
