@@ -1,20 +1,27 @@
 {
   "trained_at": "2026-11-02",
-  "train_size": 13413,
+  "train_size": 20977,
   "test_sizes": {
+    "sentfin_test": 1891,
     "phrasebank_test": 968,
     "twitter_test": 2388,
-    "combined_test": 3356
+    "combined_test": 5247
   },
   "label_counts_train": {
-    "neutral": 8475,
-    "positive": 3013,
-    "negative": 1925
+    "neutral": 11202,
+    "positive": 5692,
+    "negative": 4083
   },
   "models": {
     "majority_class": {
       "train_seconds": 0.4,
       "scores": [
+        {
+          "set": "sentfin_test",
+          "n": 1891,
+          "accuracy": 0.3607,
+          "macro_f1": 0.1767
+        },
         {
           "set": "phrasebank_test",
           "n": 968,
@@ -29,145 +36,206 @@
         },
         {
           "set": "combined_test",
-          "n": 3356,
-          "accuracy": 0.638,
-          "macro_f1": 0.2597
+          "n": 5247,
+          "accuracy": 0.538,
+          "macro_f1": 0.2332
         }
       ]
     },
     "complement_nb": {
-      "train_seconds": 1.6,
+      "train_seconds": 2.1,
       "scores": [
+        {
+          "set": "sentfin_test",
+          "n": 1891,
+          "accuracy": 0.7864,
+          "macro_f1": 0.7865
+        },
         {
           "set": "phrasebank_test",
           "n": 968,
-          "accuracy": 0.7252,
-          "macro_f1": 0.6727
+          "accuracy": 0.7231,
+          "macro_f1": 0.6498
         },
         {
           "set": "twitter_test",
           "n": 2388,
-          "accuracy": 0.8049,
-          "macro_f1": 0.7363
+          "accuracy": 0.8082,
+          "macro_f1": 0.7395
         },
         {
           "set": "combined_test",
-          "n": 3356,
-          "accuracy": 0.7819,
-          "macro_f1": 0.7158
+          "n": 5247,
+          "accuracy": 0.7846,
+          "macro_f1": 0.7595
         }
       ],
       "best_params": {
         "clf__alpha": 0.3
       },
-      "cv_macro_f1": 0.7027
+      "cv_macro_f1": 0.7469
     },
     "linear_svm": {
-      "train_seconds": 1.5,
+      "train_seconds": 2.0,
       "scores": [
+        {
+          "set": "sentfin_test",
+          "n": 1891,
+          "accuracy": 0.8281,
+          "macro_f1": 0.8277
+        },
         {
           "set": "phrasebank_test",
           "n": 968,
-          "accuracy": 0.7738,
-          "macro_f1": 0.727
+          "accuracy": 0.7779,
+          "macro_f1": 0.7298
         },
         {
           "set": "twitter_test",
           "n": 2388,
-          "accuracy": 0.8329,
-          "macro_f1": 0.7694
+          "accuracy": 0.8304,
+          "macro_f1": 0.7711
         },
         {
           "set": "combined_test",
-          "n": 3356,
-          "accuracy": 0.8159,
-          "macro_f1": 0.7555
+          "n": 5247,
+          "accuracy": 0.8199,
+          "macro_f1": 0.7977
         }
       ],
       "best_params": {
         "clf__C": 0.3
       },
-      "cv_macro_f1": 0.7313
+      "cv_macro_f1": 0.7841
     },
     "logistic_regression": {
-      "train_seconds": 14.1,
+      "train_seconds": 15.3,
       "scores": [
+        {
+          "set": "sentfin_test",
+          "n": 1891,
+          "accuracy": 0.8213,
+          "macro_f1": 0.8212
+        },
         {
           "set": "phrasebank_test",
           "n": 968,
-          "accuracy": 0.7521,
-          "macro_f1": 0.712
+          "accuracy": 0.7624,
+          "macro_f1": 0.72
         },
         {
           "set": "twitter_test",
           "n": 2388,
-          "accuracy": 0.8132,
-          "macro_f1": 0.7563
+          "accuracy": 0.8157,
+          "macro_f1": 0.7603
         },
         {
           "set": "combined_test",
-          "n": 3356,
-          "accuracy": 0.7956,
-          "macro_f1": 0.7421
+          "n": 5247,
+          "accuracy": 0.8079,
+          "macro_f1": 0.7888
         }
       ],
       "best_params": {
         "clf__C": 3.0
       },
-      "cv_macro_f1": 0.7203
+      "cv_macro_f1": 0.7726
     }
   },
+  "logreg_without_indian_data": [
+    {
+      "set": "sentfin_test",
+      "n": 1891,
+      "accuracy": 0.6737,
+      "macro_f1": 0.6708
+    },
+    {
+      "set": "phrasebank_test",
+      "n": 968,
+      "accuracy": 0.7521,
+      "macro_f1": 0.712
+    },
+    {
+      "set": "twitter_test",
+      "n": 2388,
+      "accuracy": 0.8132,
+      "macro_f1": 0.7563
+    },
+    {
+      "set": "combined_test",
+      "n": 5247,
+      "accuracy": 0.7517,
+      "macro_f1": 0.7199
+    }
+  ],
   "shipped_model": "logistic_regression",
   "confusion_matrices": {
+    "sentfin_test": [
+      [
+        444,
+        56,
+        40
+      ],
+      [
+        56,
+        546,
+        80
+      ],
+      [
+        42,
+        64,
+        563
+      ]
+    ],
     "phrasebank_test": [
       [
         82,
-        25,
-        14
+        27,
+        12
       ],
       [
-        27,
-        470,
-        78
+        22,
+        487,
+        66
       ],
       [
         16,
-        80,
-        176
+        87,
+        169
       ]
     ],
     "twitter_test": [
       [
-        253,
-        59,
-        35
+        248,
+        60,
+        39
       ],
       [
-        119,
+        110,
         1330,
-        117
+        126
       ],
       [
-        46,
-        70,
-        359
+        37,
+        68,
+        370
       ]
     ],
     "combined_test": [
       [
-        335,
-        84,
-        49
+        774,
+        143,
+        91
       ],
       [
-        146,
-        1800,
-        195
+        188,
+        2363,
+        272
       ],
       [
-        62,
-        150,
-        535
+        95,
+        219,
+        1102
       ]
     ]
   },
@@ -179,55 +247,55 @@
   "vocab_size": 8000,
   "top_words": {
     "negative": [
-      "lower",
       "down",
-      "downgraded",
-      "decreased",
-      "misses",
-      "fell",
-      "negative",
-      "sues",
-      "down num",
-      "weak",
-      "loses",
+      "lower",
       "fall",
-      "below",
+      "slips",
+      "sell",
+      "falls",
+      "downgraded",
       "loss",
-      "cuts"
+      "negative",
+      "loses",
+      "weak",
+      "decreased",
+      "plunges",
+      "slip",
+      "decline"
     ],
     "neutral": [
-      "pct of",
+      "appoints",
+      "mixed",
       "trump",
-      "does",
-      "you",
-      "power",
-      "stake",
-      "or",
+      "sebi",
+      "flat",
+      "pct of",
       "stock marketscreener",
-      "approximately",
-      "emissions",
-      "includes",
-      "do",
-      "the fed",
-      "how",
-      "stocks that"
+      "steadies",
+      "steady",
+      "good stock",
+      "hold",
+      "you",
+      "does",
+      "but",
+      "approximately"
     ],
     "positive": [
-      "positive",
-      "rose",
       "rises",
-      "higher",
-      "increased",
-      "leading",
-      "bullish",
-      "signed",
-      "up from",
       "up",
-      "up num",
-      "jump",
-      "increase",
+      "surges",
+      "positive",
+      "rallies",
       "soar",
-      "grew"
+      "rose",
+      "bullish",
+      "gain",
+      "jumps",
+      "higher",
+      "surge",
+      "up num",
+      "good",
+      "boost"
     ]
   }
 }

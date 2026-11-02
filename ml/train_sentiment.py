@@ -8,7 +8,11 @@ a headline was called positive or negative.
 Data (see get_data.py):
   - Financial PhraseBank, Sentences_50Agree  -> stratified 80/20 train/test split
   - Twitter Financial News Sentiment        -> its own train / valid files (valid = test)
-Both are mapped to: negative / neutral / positive.
+  - SEntFiN 1.0 (Indian headlines)          -> stratified 80/20 split. Labels are per entity,
+    I keep only headlines where every entity has the same label (so the headline has one clear label)
+All mapped to: negative / neutral / positive.
+
+I also train a model WITHOUT SEntFiN to measure how much the Indian data helps on Indian headlines.
 
 Run:  python ml/get_data.py && python ml/train_sentiment.py
 Outputs:
@@ -80,6 +84,21 @@ def load_twitter(name):
     return df[["text", "label"]].drop_duplicates("text")
 
 
+def load_sentfin():
+    import ast
+    df = pd.read_csv(os.path.join(DATA, "SEntFiN.csv"))
+    rows = []
+    for title, dec in zip(df["Title"], df["Decisions"]):
+        try:
+            labels = set(ast.literal_eval(dec).values())
+        except Exception:
+            continue
+        if len(labels) == 1:
+            rows.append((str(title).strip(), labels.pop()))
+    out = pd.DataFrame(rows, columns=["text", "label"]).drop_duplicates("text")
+    return out[out["label"].isin(LABELS)]
+
+
 def evaluate(name, y_true, y_pred):
     return {
         "set": name,
@@ -97,12 +116,16 @@ def main():
     tw_test = load_twitter("sent_valid.csv")
     # make sure no test sentence leaks into training
     tw_train = tw_train[~tw_train["text"].isin(tw_test["text"])]
+    sf = load_sentfin()
+    sf_train, sf_test = train_test_split(sf, test_size=0.2, stratify=sf["label"], random_state=SEED)
 
-    train = pd.concat([fpb_train.assign(src="fpb"), tw_train.assign(src="twitter")], ignore_index=True)
+    train_no_india = pd.concat([fpb_train, tw_train], ignore_index=True)
+    train = pd.concat([fpb_train, tw_train, sf_train], ignore_index=True)
     tests = {
+        "sentfin_test": sf_test,
         "phrasebank_test": fpb_test,
         "twitter_test": tw_test,
-        "combined_test": pd.concat([fpb_test, tw_test], ignore_index=True),
+        "combined_test": pd.concat([sf_test, fpb_test, tw_test], ignore_index=True),
     }
     print("train size", len(train), train["label"].value_counts().to_dict())
     for k, v in tests.items():
@@ -124,6 +147,12 @@ def main():
             Pipeline([("tfidf", vec()), ("clf", LogisticRegression(max_iter=3000, class_weight="balanced"))]),
             {"clf__C": [1.0, 3.0, 10.0]}, cv=cv, scoring="f1_macro", n_jobs=-1),
     }
+
+    # how much does Indian training data help? same model, trained without SEntFiN
+    base = Pipeline([("tfidf", vec()), ("clf", LogisticRegression(max_iter=3000, class_weight="balanced", C=3.0))])
+    base.fit(train_no_india["text"], train_no_india["label"])
+    without_india = [evaluate(n, d["label"], base.predict(d["text"])) for n, d in tests.items()]
+    print("LR without SEntFiN:", without_india)
 
     results = {}
     for name, model in candidates.items():
@@ -171,6 +200,7 @@ def main():
         "test_sizes": {k: int(len(v)) for k, v in tests.items()},
         "label_counts_train": train["label"].value_counts().to_dict(),
         "models": results,
+        "logreg_without_indian_data": without_india,
         "shipped_model": "logistic_regression",
         "confusion_matrices": cms,
         "labels": LABELS,
@@ -191,7 +221,7 @@ def plot_confusion(cms, path):
     import matplotlib.pyplot as plt
 
     fig, axes = plt.subplots(1, 2, figsize=(10, 4.2))
-    for ax, name in zip(axes, ["phrasebank_test", "twitter_test"]):
+    for ax, name in zip(axes, ["sentfin_test", "combined_test"]):
         cm = np.array(cms[name])
         norm = cm / cm.sum(axis=1, keepdims=True)
         ax.imshow(norm, cmap="Blues", vmin=0, vmax=1)

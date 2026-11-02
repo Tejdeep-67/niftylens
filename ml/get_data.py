@@ -5,6 +5,9 @@
    I use the "Sentences_50Agree" file (label = majority vote of annotators).
 2. Twitter Financial News Sentiment (zeroshot on Hugging Face) - finance news
    headlines posted on Twitter, labelled bearish / bullish / neutral. Licence: MIT.
+3. SEntFiN 1.0 (Sinha et al., 2022) - ~10.7k Indian financial news headlines with
+   entity-level sentiment labelled by annotators. Licence: MIT (github.com/pyRis/SEntFiN).
+   This one matters most because the app shows Indian headlines.
 
 Files go to ml/data/ (git-ignored).
 """
@@ -18,6 +21,8 @@ DATA = os.path.join(HERE, "data")
 
 FPB_URL = "https://huggingface.co/datasets/takala/financial_phrasebank/resolve/main/data/FinancialPhraseBank-v1.0.zip"
 TW_BASE = "https://huggingface.co/datasets/zeroshot/twitter-financial-news-sentiment/resolve/main/"
+# pinned to a commit so the data can't change under me
+SENTFIN_URL = "https://raw.githubusercontent.com/pyRis/SEntFiN/eba43610fe3cb57a3e5773cd6c037da1f8992ad5/SEntFiN.csv"
 
 
 def download(url):
@@ -40,6 +45,11 @@ def main():
             print("downloading", name)
             with open(p, "wb") as f:
                 f.write(download(TW_BASE + name))
+    p = os.path.join(DATA, "SEntFiN.csv")
+    if not os.path.exists(p):
+        print("downloading SEntFiN")
+        with open(p, "wb") as f:
+            f.write(download(SENTFIN_URL))
     print("data ready in", DATA)
 
 
