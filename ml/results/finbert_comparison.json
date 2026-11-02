@@ -1,0 +1,20 @@
+{
+  "model": "ProsusAI/finbert",
+  "params_millions": 109.5,
+  "scores": [
+    {
+      "set": "sentfin_test",
+      "n": 1891,
+      "accuracy": 0.7129,
+      "macro_f1": 0.7159,
+      "ms_per_headline_cpu": 4.11
+    },
+    {
+      "set": "twitter_test",
+      "n": 2388,
+      "accuracy": 0.7257,
+      "macro_f1": 0.6685,
+      "ms_per_headline_cpu": 8.97
+    }
+  ]
+}
