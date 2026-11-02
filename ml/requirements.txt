@@ -1,0 +1,8 @@
+scikit-learn>=1.4
+numpy
+pandas
+scipy
+matplotlib
+# only for compare_finbert.py
+# torch
+# transformers
