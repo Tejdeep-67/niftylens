@@ -1,0 +1,233 @@
+{
+  "trained_at": "2026-11-02",
+  "train_size": 13413,
+  "test_sizes": {
+    "phrasebank_test": 968,
+    "twitter_test": 2388,
+    "combined_test": 3356
+  },
+  "label_counts_train": {
+    "neutral": 8475,
+    "positive": 3013,
+    "negative": 1925
+  },
+  "models": {
+    "majority_class": {
+      "train_seconds": 0.4,
+      "scores": [
+        {
+          "set": "phrasebank_test",
+          "n": 968,
+          "accuracy": 0.594,
+          "macro_f1": 0.2484
+        },
+        {
+          "set": "twitter_test",
+          "n": 2388,
+          "accuracy": 0.6558,
+          "macro_f1": 0.264
+        },
+        {
+          "set": "combined_test",
+          "n": 3356,
+          "accuracy": 0.638,
+          "macro_f1": 0.2597
+        }
+      ]
+    },
+    "complement_nb": {
+      "train_seconds": 1.6,
+      "scores": [
+        {
+          "set": "phrasebank_test",
+          "n": 968,
+          "accuracy": 0.7252,
+          "macro_f1": 0.6727
+        },
+        {
+          "set": "twitter_test",
+          "n": 2388,
+          "accuracy": 0.8049,
+          "macro_f1": 0.7363
+        },
+        {
+          "set": "combined_test",
+          "n": 3356,
+          "accuracy": 0.7819,
+          "macro_f1": 0.7158
+        }
+      ],
+      "best_params": {
+        "clf__alpha": 0.3
+      },
+      "cv_macro_f1": 0.7027
+    },
+    "linear_svm": {
+      "train_seconds": 1.5,
+      "scores": [
+        {
+          "set": "phrasebank_test",
+          "n": 968,
+          "accuracy": 0.7738,
+          "macro_f1": 0.727
+        },
+        {
+          "set": "twitter_test",
+          "n": 2388,
+          "accuracy": 0.8329,
+          "macro_f1": 0.7694
+        },
+        {
+          "set": "combined_test",
+          "n": 3356,
+          "accuracy": 0.8159,
+          "macro_f1": 0.7555
+        }
+      ],
+      "best_params": {
+        "clf__C": 0.3
+      },
+      "cv_macro_f1": 0.7313
+    },
+    "logistic_regression": {
+      "train_seconds": 14.1,
+      "scores": [
+        {
+          "set": "phrasebank_test",
+          "n": 968,
+          "accuracy": 0.7521,
+          "macro_f1": 0.712
+        },
+        {
+          "set": "twitter_test",
+          "n": 2388,
+          "accuracy": 0.8132,
+          "macro_f1": 0.7563
+        },
+        {
+          "set": "combined_test",
+          "n": 3356,
+          "accuracy": 0.7956,
+          "macro_f1": 0.7421
+        }
+      ],
+      "best_params": {
+        "clf__C": 3.0
+      },
+      "cv_macro_f1": 0.7203
+    }
+  },
+  "shipped_model": "logistic_regression",
+  "confusion_matrices": {
+    "phrasebank_test": [
+      [
+        82,
+        25,
+        14
+      ],
+      [
+        27,
+        470,
+        78
+      ],
+      [
+        16,
+        80,
+        176
+      ]
+    ],
+    "twitter_test": [
+      [
+        253,
+        59,
+        35
+      ],
+      [
+        119,
+        1330,
+        117
+      ],
+      [
+        46,
+        70,
+        359
+      ]
+    ],
+    "combined_test": [
+      [
+        335,
+        84,
+        49
+      ],
+      [
+        146,
+        1800,
+        195
+      ],
+      [
+        62,
+        150,
+        535
+      ]
+    ]
+  },
+  "labels": [
+    "negative",
+    "neutral",
+    "positive"
+  ],
+  "vocab_size": 8000,
+  "top_words": {
+    "negative": [
+      "lower",
+      "down",
+      "downgraded",
+      "decreased",
+      "misses",
+      "fell",
+      "negative",
+      "sues",
+      "down num",
+      "weak",
+      "loses",
+      "fall",
+      "below",
+      "loss",
+      "cuts"
+    ],
+    "neutral": [
+      "pct of",
+      "trump",
+      "does",
+      "you",
+      "power",
+      "stake",
+      "or",
+      "stock marketscreener",
+      "approximately",
+      "emissions",
+      "includes",
+      "do",
+      "the fed",
+      "how",
+      "stocks that"
+    ],
+    "positive": [
+      "positive",
+      "rose",
+      "rises",
+      "higher",
+      "increased",
+      "leading",
+      "bullish",
+      "signed",
+      "up from",
+      "up",
+      "up num",
+      "jump",
+      "increase",
+      "soar",
+      "grew"
+    ]
+  }
+}

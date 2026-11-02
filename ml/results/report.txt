@@ -1,0 +1,47 @@
+=== phrasebank_test (n=968) ===
+              precision    recall  f1-score   support
+
+    negative      0.656     0.678     0.667       121
+     neutral      0.817     0.817     0.817       575
+    positive      0.657     0.647     0.652       272
+
+    accuracy                          0.752       968
+   macro avg      0.710     0.714     0.712       968
+weighted avg      0.752     0.752     0.752       968
+
+confusion matrix (rows = true, cols = predicted) ['negative', 'neutral', 'positive']
+[[ 82  25  14]
+ [ 27 470  78]
+ [ 16  80 176]]
+
+=== twitter_test (n=2388) ===
+              precision    recall  f1-score   support
+
+    negative      0.605     0.729     0.661       347
+     neutral      0.912     0.849     0.879      1566
+    positive      0.703     0.756     0.728       475
+
+    accuracy                          0.813      2388
+   macro avg      0.740     0.778     0.756      2388
+weighted avg      0.825     0.813     0.818      2388
+
+confusion matrix (rows = true, cols = predicted) ['negative', 'neutral', 'positive']
+[[ 253   59   35]
+ [ 119 1330  117]
+ [  46   70  359]]
+
+=== combined_test (n=3356) ===
+              precision    recall  f1-score   support
+
+    negative      0.617     0.716     0.663       468
+     neutral      0.885     0.841     0.862      2141
+    positive      0.687     0.716     0.701       747
+
+    accuracy                          0.796      3356
+   macro avg      0.730     0.758     0.742      3356
+weighted avg      0.803     0.796     0.799      3356
+
+confusion matrix (rows = true, cols = predicted) ['negative', 'neutral', 'positive']
+[[ 335   84   49]
+ [ 146 1800  195]
+ [  62  150  535]]
