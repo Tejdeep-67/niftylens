@@ -43,6 +43,8 @@ export default function PriceChart({ candles, show, intraday, type = "candles", 
       timeScale: { ...baseOptions(intraday).timeScale, visible: false },
       localization: { priceFormatter: (p) => p.toFixed(0) },
     });
+    // one TradingView attribution (on the main chart) is enough
+    rchart.applyOptions({ layout: { attributionLogo: false } });
 
     const all = candles;
     const closes = all.map((c) => c.c);

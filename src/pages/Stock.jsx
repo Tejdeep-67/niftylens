@@ -225,7 +225,7 @@ export default function Stock() {
       </div>
 
       {isStock && (
-        <div className="grid two-col" style={{ marginTop: 16, gridTemplateColumns: "minmax(0,1fr) minmax(0,2fr)" }}>
+        <div className="grid news-grid" style={{ marginTop: 16 }}>
           <div className="panel reveal">
             <div className="panel-head">
               <h2>News sentiment</h2>

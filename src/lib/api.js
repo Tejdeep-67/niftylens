@@ -97,8 +97,8 @@ function expandCandles(data) {
 export const api = {
   quotes: () => load("quotes", "/api/quotes", "quotes.json"),
   chart: async (symbol, range) => {
-    // the sample only has 1d and 1y; shorter daily ranges are sliced from 1y
-    const sampleRange = range === "1d" || range === "5d" ? "1d" : "1y";
+    // the sample only has the 1d intraday chart and 1y of daily candles
+    const sampleRange = range === "1d" || range === "5d" ? "1d" : "daily";
     const r = await load(`chart:${symbol}:${range}`, `/api/chart?symbol=${encodeURIComponent(symbol)}&range=${range}`, `charts/${fileSafe(symbol)}-${sampleRange}.json`);
     r.data = expandCandles(r.data);
     if (r.mode === "sample" && range !== sampleRange) {

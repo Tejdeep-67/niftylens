@@ -343,6 +343,7 @@ footer.site a { color: var(--muted); text-decoration: underline; text-decoration
 .kpi .k { font-size: 12px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.07em; font-weight: 600; }
 .kpi .v { font-size: 24px; font-weight: 600; margin-top: 4px; }
 .two-col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.news-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); align-items: start; }
 .prose { color: var(--muted); font-size: 14.5px; line-height: 1.65; }
 .prose p + p { margin-top: 10px; }
 .prose strong { color: var(--text); font-weight: 600; }
@@ -351,7 +352,7 @@ footer.site a { color: var(--muted); text-decoration: underline; text-decoration
 .cm .h { color: var(--dim); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; justify-content: center; }
 
 @media (max-width: 1100px) {
-  .overview-main, .stock-grid { grid-template-columns: minmax(0, 1fr); }
+  .overview-main, .stock-grid, .news-grid { grid-template-columns: minmax(0, 1fr); }
   .side-stack { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .nav a { padding: 7px 9px; }
 }
