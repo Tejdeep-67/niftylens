@@ -169,6 +169,7 @@ main { flex: 1; padding: 22px 0 60px; }
 .price-cell { border-radius: 5px; padding: 0 3px; margin: 0 -3px; }
 
 /* overview layout */
+@media (min-width: 1101px) { .stock-grid > .side-stack { position: sticky; top: 76px; } }
 .overview-main { grid-template-columns: minmax(0, 1fr) 360px; align-items: start; }
 .side-stack { display: grid; gap: 16px; }
 
@@ -257,6 +258,8 @@ label.field { display: grid; gap: 6px; font-size: 12.5px; color: var(--muted); f
 
 /* search */
 .search { position: relative; width: 260px; }
+.search.w-full { width: 100%; }
+.page-head .search { width: 280px; max-width: 100%; }
 .search .input { padding-left: 34px; }
 .search svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--dim); }
 .search-results {
