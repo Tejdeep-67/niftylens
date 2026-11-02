@@ -98,7 +98,7 @@ python get_data.py
 python train_sentiment.py     # writes shared/sentiment-model.js and ml/results/
 python compare_finbert.py     # optional, needs torch + transformers
 cd ../analysis
-python collect_headlines.py   # ~20 min, polite delays between requests
+python collect_headlines.py --days 120   # ~20 min, polite delays between requests
 python sentiment_vs_returns.py
 ```
 
