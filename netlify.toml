@@ -9,6 +9,12 @@
 [functions]
   node_bundler = "esbuild"
 
+[[headers]]
+  for = "/site.webmanifest"
+  [headers.values]
+    Content-Type = "application/manifest+json"
+
+
 # nice urls for the functions
 [[redirects]]
   from = "/api/*"
