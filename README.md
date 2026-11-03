@@ -116,4 +116,4 @@ Market data from Yahoo Finance and Moneycontrol (public endpoints, for personal/
 
 ## License
 
-MIT for the code, see [LICENSE](LICENSE). The SEntFiN headline dataset, market data and news headlines keep their own terms (see Credits). Not investment advice.
+MIT for the code, see [LICENSE](LICENSE). The datasets keep their own licences: SEntFiN is MIT and Financial PhraseBank is CC BY-NC-SA 3.0, so the trained sentiment model (it learned partly from PhraseBank) is only for non-commercial use. Market data and news headlines belong to their sources (see Credits). Not investment advice.
