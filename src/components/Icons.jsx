@@ -15,10 +15,11 @@ export const IconRefresh = (p) => (<svg {...base} width={16} height={16} {...p}>
 export function Logo(props) {
   return (
     <svg viewBox="0 0 64 64" {...props} aria-hidden="true">
-      <rect width="64" height="64" rx="15" fill="#0f1520" stroke="rgba(148,163,184,.25)" />
-      <circle cx="28" cy="28" r="13" fill="none" stroke="#7aa2ff" strokeWidth="4.5" />
-      <path d="M37.5 37.5L49 49" stroke="#7aa2ff" strokeWidth="5.5" strokeLinecap="round" />
-      <path d="M20.5 31.5l5-6 4 4 6-8" fill="none" stroke="#e6ebf2" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+      <rect width="64" height="64" rx="15" fill="#0e131b" />
+      <rect x=".75" y=".75" width="62.5" height="62.5" rx="14.25" fill="none" stroke="#7aa2ff" strokeOpacity=".35" strokeWidth="1.5" />
+      <circle cx="28" cy="28" r="15" fill="none" stroke="#7aa2ff" strokeWidth="5" />
+      <path d="M39.5 39.5L51 51" stroke="#7aa2ff" strokeWidth="6" strokeLinecap="round" />
+      <path d="M19.5 33.5l5.5-5.5 4 3.5 8-9" fill="none" stroke="#2fd08c" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
