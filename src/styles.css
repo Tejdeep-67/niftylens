@@ -368,8 +368,6 @@ footer.site a { color: var(--muted); text-decoration: underline; text-decoration
   .bottom-nav a.active { color: var(--accent-2); }
   main { padding-bottom: 96px; }
   .toasts { bottom: 84px; }
-  /* netlify's free-plan badge is fixed to the bottom right, keep it above the tab bar */
-  body > iframe[style*="2147483645"] { bottom: calc(62px + env(safe-area-inset-bottom)) !important; }
 }
 @media (max-width: 640px) {
   .container { padding: 0 14px; }
