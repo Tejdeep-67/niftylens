@@ -113,3 +113,7 @@ python sentiment_vs_returns.py
 ## Credits
 
 Market data from Yahoo Finance and Moneycontrol (public endpoints, for personal/educational use). News via Google News and publisher RSS feeds, headlines link to the original articles. Holiday list from NSE. Charts by TradingView's lightweight-charts (Apache 2.0).
+
+## License
+
+MIT for the code, see [LICENSE](LICENSE). The SEntFiN headline dataset, market data and news headlines keep their own terms (see Credits). Not investment advice.
